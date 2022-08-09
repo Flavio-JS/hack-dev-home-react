@@ -1,6 +1,5 @@
 import { Icon } from "../Icons/Icon";
 import { MenuNavBar } from "../MenuNavBar/MenuNavBar";
-import { Button } from "../Button/Button";
 import { useState } from "react";
 import "./Header.css";
 
@@ -57,7 +56,6 @@ export const Header = () => {
           </ul>
         </nav>
       </div>
-      <Button txt="ble ble" fn={openMenu} />
     </header>
   );
 };
