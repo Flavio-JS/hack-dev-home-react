@@ -6,36 +6,6 @@ header {
   background-color: var(--color-eggshell);
 }
 
-.header__menu {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  height: 100vh;
-  background-color: #dbd4b1e0;
-  z-index: 3;
-  position: fixed;
-  right: 0;
-  top: 0;
-  overflow-x: hidden;
-  transition: all 0.5s;
-}
-.header__menu i {
-  font-size: 2rem;
-  padding: 25px 20px;
-}
-.header__menu i:hover {
-  cursor: pointer;
-  opacity: 0.7;
-}
-.header__menu li {
-  padding: 15px;
-  font-weight: bold;
-}
-.header__menu li:hover {
-  cursor: pointer;
-  opacity: 0.7;
-}
-
 .header__top {
   display: flex;
   justify-content: space-between;
@@ -143,8 +113,7 @@ header {
     letter-spacing: 0.05rem;
   }
 
-  .header__nav .fa-bars,
-  .fa-magnifying-glass {
+  .header__nav .fa-bars {
     display: none;
   }
 }
