@@ -1,20 +1,31 @@
 import { useState } from "react";
 import "./Header.css";
+import { MobileMenu } from "../MobileMenu/MobileMenu";
 
 export const Header = () => {
   let [searchOnOff, setSearchOnOff] = useState([0, "0", "none"]);
+
   let screenWidth = window.innerWidth;
+  let iconChangeSearch = document.querySelector(".search") as HTMLElement;
 
   const mobileSearch = () => {
     if (searchOnOff[0] === 0) {
-      setSearchOnOff([1, "5.4rem", "block"]);
+      setSearchOnOff([1, "5.4rem", "none"]);
+      setTimeout(() => {
+        setSearchOnOff([1, "5.4rem", "block"]);
+      }, 100);
+      iconChangeSearch.classList.remove("fa-magnifying-glass");
+      iconChangeSearch.classList.add("fa-xmark");
     } else {
       setSearchOnOff([0, "0", "none"]);
+      iconChangeSearch.classList.remove("fa-xmark");
+      iconChangeSearch.classList.add("fa-magnifying-glass");
     }
   };
 
   return (
     <header>
+      <MobileMenu />
       <div className="header__top container">
         <div className="header__imgs">
           <img
@@ -33,7 +44,7 @@ export const Header = () => {
           <i className="fa-solid fa-user"></i>
           <i className="fa-solid fa-cart-shopping"></i>
           <i
-            className="fa-solid fa-magnifying-glass"
+            className="search fa-solid fa-magnifying-glass"
             onClick={mobileSearch}
           ></i>
           <i className="fa-solid fa-bars"></i>
