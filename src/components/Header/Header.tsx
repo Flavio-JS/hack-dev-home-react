@@ -1,31 +1,47 @@
 import { useState } from "react";
 import "./Header.css";
-import { MobileMenu } from "../MobileMenu/MobileMenu";
 
 export const Header = () => {
-  let [searchOnOff, setSearchOnOff] = useState([0, "0", "none"]);
+  let [searchVisible, setSearchVisible] = useState([0, "0", "none"]);
+  let [menuWidth, setMenuWidth] = useState("0");
 
   let screenWidth = window.innerWidth;
   let iconChangeSearch = document.querySelector(".search") as HTMLElement;
 
   const mobileSearch = () => {
-    if (searchOnOff[0] === 0) {
-      setSearchOnOff([1, "5.4rem", "none"]);
+    if (searchVisible[0] === 0) {
+      setSearchVisible([1, "5.4rem", "none"]);
       setTimeout(() => {
-        setSearchOnOff([1, "5.4rem", "block"]);
+        setSearchVisible([1, "5.4rem", "block"]);
       }, 100);
       iconChangeSearch.classList.remove("fa-magnifying-glass");
       iconChangeSearch.classList.add("fa-xmark");
     } else {
-      setSearchOnOff([0, "0", "none"]);
+      setSearchVisible([0, "0", "none"]);
       iconChangeSearch.classList.remove("fa-xmark");
       iconChangeSearch.classList.add("fa-magnifying-glass");
     }
   };
 
+  const openMenu = () => {
+    setMenuWidth("100vw");
+  };
+  const closeMenu = () => {
+    setMenuWidth("0");
+  };
+
   return (
     <header>
-      <MobileMenu />
+      <div className="header__menu" style={{ width: `${menuWidth}` }}>
+        <i className="menu fa-solid fa-xmark" onClick={closeMenu}></i>
+        <ul>
+          <li onClick={closeMenu}>Jeans</li>
+          <li onClick={closeMenu}>Camisas</li>
+          <li onClick={closeMenu}>Suéter</li>
+          <li onClick={closeMenu}>Calças moletom</li>
+          <li onClick={closeMenu}>Camisas moletom</li>
+        </ul>
+      </div>
       <div className="header__top container">
         <div className="header__imgs">
           <img
@@ -47,7 +63,7 @@ export const Header = () => {
             className="search fa-solid fa-magnifying-glass"
             onClick={mobileSearch}
           ></i>
-          <i className="fa-solid fa-bars"></i>
+          <i className="menu fa-solid fa-bars" onClick={openMenu}></i>
         </nav>
       </div>
       <div className="header__bottom container header__bottom--display-none">
@@ -55,7 +71,7 @@ export const Header = () => {
           <>
             <div
               className="header__search "
-              style={{ height: `${searchOnOff[1]}` }}
+              style={{ height: `${searchVisible[1]}` }}
             >
               <input
                 id="header__input-text"
@@ -63,15 +79,15 @@ export const Header = () => {
                 name="search"
                 placeholder="Pesquise"
                 style={{
-                  opacity: `${searchOnOff[0]}`,
-                  display: `${searchOnOff[2]}`,
+                  opacity: `${searchVisible[0]}`,
+                  display: `${searchVisible[2]}`,
                 }}
               />
               <i
                 className="fa-solid fa-magnifying-glass"
                 style={{
-                  opacity: `${searchOnOff[0]}`,
-                  display: `${searchOnOff[2]}`,
+                  opacity: `${searchVisible[0]}`,
+                  display: `${searchVisible[2]}`,
                 }}
               ></i>
             </div>
