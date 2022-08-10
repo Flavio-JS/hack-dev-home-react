@@ -5,6 +5,7 @@ import "./Header.css";
 
 export const Header = () => {
   let [menuWidth, setMenuWidth] = useState("0");
+  let [search, setSearch] = useState("");
 
   const openMenu = () => {
     setMenuWidth("100vw");
@@ -43,6 +44,8 @@ export const Header = () => {
             type="text"
             name="search"
             placeholder="Pesquise"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
           />
           <i className="fa-solid fa-magnifying-glass"></i>
         </div>
