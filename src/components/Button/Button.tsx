@@ -1,7 +1,7 @@
 import "./Button.css";
 
 type Props = {
-  fn: () => any;
+  fn?: () => any;
   txt: string;
   classes?: string;
 };
