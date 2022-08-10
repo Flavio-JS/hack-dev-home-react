@@ -6,8 +6,10 @@ type Props = {
 };
 
 export const MenuNavBar = ({ menuWidth, closeMenu }: Props) => {
-  let divMenuNavBar = document.querySelector(".menu-nav-bar") as HTMLElement;
-  divMenuNavBar.style.width = menuWidth;
+  setTimeout(() => {
+    let divMenuNavBar = document.querySelector(".menu-nav-bar") as HTMLElement;
+    divMenuNavBar.style.width = menuWidth;
+  }, 10);
 
   return (
     <div className="menu-nav-bar">
